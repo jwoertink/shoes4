@@ -7,7 +7,7 @@ describe Shoes::ElementMethods do
   context "strong" do
     it "should return a Style object" do
       mock_stack do
-        strong("test").class.should == Shoes::Style
+        strong("test").class.should == Shoes::Strong
       end
     end
   end
