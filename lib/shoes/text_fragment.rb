@@ -19,4 +19,10 @@ module Shoes
     
   end
   
+  # This class handles "bold" text
+  # Not sure if this should stay here. Just copying how Slot hold Flow and Stack for now.
+  class Strong < TextFragment
+    
+  end
+  
 end

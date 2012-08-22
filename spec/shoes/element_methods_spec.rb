@@ -5,7 +5,7 @@ describe Shoes::ElementMethods do
   let(:mock_parent) { mock(:gui => mock_gui, :add_child => "ok") }
   
   context "strong" do
-    it "should return a Style object" do
+    it "should return a Strong object" do
       mock_stack do
         strong("test").class.should == Shoes::Strong
       end
