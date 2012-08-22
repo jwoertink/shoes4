@@ -14,6 +14,7 @@ require 'shoes/shape'
 require 'shoes/slot'
 require 'shoes/sound'
 require 'shoes/text_block'
+#require 'shoes/style'
 
 module Shoes
   # Methods for creating and manipulating Shoes elements
@@ -229,14 +230,23 @@ module Shoes
       Shoes::TextBlock.new(self, text, CAPTION_FONT_SIZE, opts, blk)
     end
 
-    def para(text, opts={}, &blk)
+    def para(*text, opts, &blk)
+      unless opts.respond_to?(:to_hash)
+        text << opts
+        opts = {}
+      end
       opts.merge! :app => @app
-      Shoes::TextBlock.new(self, text, PARA_FONT_SIZE, opts, blk)
+      Shoes::TextBlock.new(self, text.join, PARA_FONT_SIZE, opts, blk)
     end
 
     def inscription(text, opts={}, &blk)
       opts.merge! :app => @app
       Shoes::TextBlock.new(self, text, INSCRIPTION_FONT_SIZE, opts, blk)
+    end
+    
+    def strong(text, opts={})
+      # opts.merge! :app => @app, :kind => :strong
+      # Shoes::Style.new(self, text, opts)
     end
   end
 end
