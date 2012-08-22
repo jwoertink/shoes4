@@ -1,22 +1,19 @@
 require 'shoes/spec_helper'
-require 'shoes/element_methods'
-include Shoes::ElementMethods
 
 describe Shoes::ElementMethods do
-  let(:mock_gui) { mock(:set_font, :update_text, :hidden, :new) }
-  let(:mock_parent) { mock(:gui => "mock gui", :add_child => "ok") }
-  let(:new_stack) { Shoes::Stack.new(mock_parent, {}) }
+  let(:mock_gui) { mock([:set_font, :update_text, :hidden, :new]) }
+  let(:mock_parent) { mock(:gui => mock_gui, :add_child => "ok") }
   
-  context "para" do
-
-    it "should return a TextBlock object" do
-      new_stack do
-        para("test").should be_kind_of Shoes::TextBlock
+  context "strong" do
+    it "should return a Style object" do
+      mock_stack do
+        strong("test").class.should == Shoes::Style
       end
     end
-    
-    it "should take any number of text arguments"
-    it "should take a hash of style options"
+  end
+  
+  def mock_stack(opts={}, &blk)
+    Shoes::Stack.new(mock_parent, opts, &blk)
   end
   
 end

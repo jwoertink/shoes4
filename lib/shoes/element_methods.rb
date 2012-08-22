@@ -14,7 +14,7 @@ require 'shoes/shape'
 require 'shoes/slot'
 require 'shoes/sound'
 require 'shoes/text_block'
-#require 'shoes/style'
+require 'shoes/style'
 
 module Shoes
   # Methods for creating and manipulating Shoes elements
@@ -245,8 +245,8 @@ module Shoes
     end
     
     def strong(text, opts={})
-      # opts.merge! :app => @app, :kind => :strong
-      # Shoes::Style.new(self, text, opts)
+      opts.merge! :app => @app, :kind => :strong
+      Shoes::Style.new(self, text, opts)
     end
   end
 end
