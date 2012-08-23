@@ -11,17 +11,17 @@ module Shoes
         @style = ::Swt::Custom::StyleRange.new
       end
       
-      def set_substring(start)
-        @style.start = start
+      def set_substring(index)
+        @style.start = index
         @style.length = @dsl.text.length
       end
       
-      def set_style(widget)
+      def set_style(widget, index)
         @widget = widget
         #This number needs to be the index of @dsl.text in @widget.text
         # can't just do a simple regex in case there's a string like
         # para("test", "test", strong("test"), "test", "test")
-        set_substring(2) 
+        set_substring(index) 
         @widget.style_range = @style
       end
       

@@ -19,6 +19,10 @@ module Shoes
       @parent.add_child(self)
     end
     
+    def set_style(widget, index)
+      @gui.set_style(widget, index)
+    end
+    
   end
   
   # This class handles "bold" text
@@ -27,10 +31,6 @@ module Shoes
     
     def initialize(parent, text, opts={})
       super(parent, text, opts)
-    end
-    
-    def set_style(widget)
-      @gui.set_style(widget)
     end
     
   end

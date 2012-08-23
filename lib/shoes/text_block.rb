@@ -22,9 +22,14 @@ module Shoes
       
       # Need to know which element is calling the styles if they exist
       # e.g.  para("Test ", strong("strong"), " method")
-      # the strong() method needs to know para is calling it. 
+      # the strong() method needs to know para is calling it.
+      count = 0 # bleh. need to re-think a better way
       text.map do |t| 
-        t.set_style(@gui.real) unless t.respond_to? :to_str
+        if t.respond_to? :to_str
+          count += t.length
+        else
+          t.set_style(@gui.real, count) 
+        end
       end
       handle_opts opts
       @parent.add_child self
