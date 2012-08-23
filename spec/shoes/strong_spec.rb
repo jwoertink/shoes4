@@ -9,4 +9,8 @@ describe Shoes::Strong do
     subject.class.should == Shoes::Strong
   end
   
+  it "should respond to text" do
+    subject.should respond_to :text
+  end
+  
 end
