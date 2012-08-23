@@ -236,7 +236,7 @@ module Shoes
         opts = {}
       end
       opts.merge! :app => @app
-      Shoes::TextBlock.new(self, text.join, PARA_FONT_SIZE, opts, blk)
+      Shoes::TextBlock.new(self, text, PARA_FONT_SIZE, opts, blk)
     end
 
     def inscription(text, opts={}, &blk)

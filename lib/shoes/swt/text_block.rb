@@ -2,6 +2,7 @@ module Shoes
   module Swt
     class TextBlock
       include Common::Child
+      attr_reader :real
 
       # Create a list box
       #

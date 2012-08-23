@@ -1,3 +1,5 @@
+require 'shoes/common_methods'
+
 module Shoes
   
   # This class is pretty close to a TextBlock with a few small exceptions
@@ -7,14 +9,14 @@ module Shoes
     include Shoes::CommonMethods
     
     attr_reader  :gui, :blk, :parent, :text
-    attr_accessor :kind
     alias_method :to_s, :text
     
     def initialize(parent, text, opts={})
       @parent = parent
-      @kind = opts[:kind]
       @app = opts[:app]
       @text = text
+      @gui = Shoes.configuration.backend_for(self, @parent.gui)
+      @parent.add_child(self)
     end
     
   end
@@ -22,6 +24,14 @@ module Shoes
   # This class handles "bold" text
   # Not sure if this should stay here. Just copying how Slot hold Flow and Stack for now.
   class Strong < TextFragment
+    
+    def initialize(parent, text, opts={})
+      super(parent, text, opts)
+    end
+    
+    def set_style(widget)
+      @gui.set_style(widget)
+    end
     
   end
   

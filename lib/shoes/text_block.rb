@@ -16,9 +16,16 @@ module Shoes
       @blk = blk
       @app = opts[:app]
       @font_size = font_size
-      @text = text
-
+      @text = text.join # text actually comes in as an array of strings and TextFragments
+      
       @gui = Shoes.configuration.backend_for(self, @parent.gui, blk)
+      
+      # Need to know which element is calling the styles if they exist
+      # e.g.  para("Test ", strong("strong"), " method")
+      # the strong() method needs to know para is calling it. 
+      text.map do |t| 
+        t.set_style(@gui.real) unless t.respond_to? :to_str
+      end
       handle_opts opts
       @parent.add_child self
     end

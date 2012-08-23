@@ -42,6 +42,7 @@ require 'shoes/swt/shape'
 require 'shoes/swt/slot'
 require 'shoes/swt/sound'
 require 'shoes/swt/text_block'
+require 'shoes/swt/text_fragment'
 
 module Shoes::Swt
   module Shoes
